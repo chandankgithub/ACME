@@ -1,0 +1,50 @@
+<div class="panel panel-primary">   
+    <div class="panel-heading">
+        <h2>{{pageTitle}}</h2>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">
+                Filter: 
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="txtFilterText" [(ngModel)]='filterText' />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+              <h3>  Filtered By: {{filterText}} </h3>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" *ngIf='products && products.length'>
+                <th>
+                    <button class="btn btn-primary" (click)='toggleImage()'>
+                        {{isImageVisible ? 'Hide' : 'Show'}} Images
+                    </button>
+                </th>
+                <th>Product</th>
+                <th>Code</th>
+                <th>Available</th>
+                <th>Price</th>
+                <th>5-Star Rating</th>
+                <tbody>
+                    <tr *ngFor='let product of products'>
+                        <td>
+                            <img *ngIf='isImageVisible'
+                                    [src]='product.imageUrl' 
+                                    [title]='product.productName'
+                                    [style.width.px]='imageWidth' 
+                                    [style.margin.px]='imageMargin'>
+                        </td>
+                        <td>{{product.productName | uppercase}}</td>
+                        <td>{{product.productCode | lowercase}}</td>
+                        <td>{{product.releaseDate | date}}</td>
+                        <td>{{product.price | currency:'INR':true:'1.1-2'}}</td>
+                        <td>{{product.starRating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
