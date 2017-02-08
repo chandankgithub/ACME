@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProduct } from './product'
 
 @Component({
     selector: 'pm-products',
@@ -9,8 +10,8 @@ export class ProductListComponent {
     imageWidth: number = 35;
     imageMargin: number = 2;
     isImageVisible: boolean = false;
-    filterText: string  = '';
-    products: any[] = [
+    filterText: string = '';
+    products: IProduct[] = [
         {
             "productId": 1,
             "productName": "Leaf Rake",
@@ -64,7 +65,7 @@ export class ProductListComponent {
 
     ]
 
-    toggleImage() : void {
+    toggleImage(): void {
         this.isImageVisible = !this.isImageVisible
     }
 }
