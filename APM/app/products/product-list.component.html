@@ -29,7 +29,7 @@
                 <th>Price</th>
                 <th>5-Star Rating</th>
                 <tbody>
-                    <tr *ngFor='let product of products'>
+                    <tr *ngFor='let product of products | productFilter:filterText '>
                         <td>
                             <img *ngIf='isImageVisible'
                                     [src]='product.imageUrl' 
