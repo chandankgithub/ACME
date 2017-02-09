@@ -1,6 +1,6 @@
 <div class="panel panel-primary">   
     <div class="panel-heading">
-        <h2>{{pageTitle}}</h2>
+        <h3>{{pageTitle}}</h3>
     </div>
     <div class="panel-body">
         <div class="row">
@@ -41,7 +41,10 @@
                         <td>{{product.productCode | lowercase}}</td>
                         <td>{{product.releaseDate | date}}</td>
                         <td>{{product.price | currency:'INR':true:'1.1-2'}}</td>
-                        <td>{{product.starRating}}</td>
+                        <!--<td>{{product.starRating}}</td>-->
+                        <td><ai-star 
+                            [rating] = 'product.starRating'
+                            (notifyStarClick) = 'onStarClicked($event)' > </ai-star></td>
                     </tr>
                 </tbody>
             </table>

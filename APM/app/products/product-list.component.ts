@@ -73,5 +73,8 @@ export class ProductListComponent implements OnInit {
     };
     ngOnInit() : void{
         console.log('On Init')
+    };
+    onStarClicked(message: string): void{
+        this.pageTitle = this.pageTitle + ' ' + message;
     }
 }
