@@ -10,12 +10,13 @@ import {ProductService} from './product.service'
     styleUrls:['product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-    
+
     pageTitle: string = 'Product List';
     imageWidth: number = 35;
     imageMargin: number = 2;
     isImageVisible: boolean = false;
     filterText: string = '';
+    errorMessage: string=''
     products: IProduct[];
 
     private _productService: ProductService;
@@ -28,7 +29,9 @@ export class ProductListComponent implements OnInit {
         this.isImageVisible = !this.isImageVisible
     };
     ngOnInit() : void{
-        this.products = this._productService.getProducts();
+        this._productService.getProducts()
+        .subscribe(products => this.products = products,
+            error => this.errorMessage = <any>error);
     };
     onStarClicked(message: string): void{
         this.pageTitle = this.pageTitle + ' ' + message;
