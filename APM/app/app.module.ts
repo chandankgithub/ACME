@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router'
+import {AppRoutingModule} from './app-routing.module'
+
 import { AppComponent }  from './app.component';
 
 import {WelcomeComponent} from './home/welcome.component'
@@ -18,15 +20,9 @@ import {ProductModule} from './products/product.module';
               BrowserModule, 
               HttpModule,
               ProductModule, 
-              RouterModule.forRoot([
-                { path:'products', component:ProductListComponent  },
-                { path:'product/:id', canActivate:[ProductDetailGuard], component:ProductDetailComponent  },
-                { path:'welcome', component:WelcomeComponent  },
-                { path:'', redirectTo:'welcome', pathMatch:'full'  },
-                { path:'**', redirectTo:'welcome', pathMatch:'full'  }
-                ])
+              AppRoutingModule
               ],
-  providers:[ProductDetailGuard],
+  
   declarations: [ 
             AppComponent ,
             WelcomeComponent,
